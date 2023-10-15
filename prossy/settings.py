@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     
     #Custom Apps
     'prossyApp',
+    'userauths'
 ]
 
 MIDDLEWARE = [
@@ -138,8 +139,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JAZZMIN_SETTINGS = {
     'site_header': "Prossy Bottles",
-    'site_brand': "You order we deliver",
+    'site_brand': "Prossy Bottles",
     'site_logo': "assets/imgs/theme/loading.gif",
     'copyright': "prossy bottles.com",
 
 }
+
+AUTH_USER_MODEL = 'userauths.User'
