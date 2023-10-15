@@ -5,5 +5,5 @@ from prossyApp.views import index
 app_name = 'prossyApp'
 
 urlpatterns = [
-    path("", views.index)
+    path("", index, name="index")
 ]
