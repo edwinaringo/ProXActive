@@ -27,7 +27,7 @@ TABLE CONTENT
  Custom amine
 ***/
 
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;500;600;700&display=swap");
 /*import vendors*/
 
 @import url(vendors/normalize.css);
@@ -823,7 +823,7 @@ h6,
 .display-1,
 .display-2,
 .heading-sm-1 {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     color: #253D4E;
     font-weight: 700;
     line-height: 1.2;
@@ -1080,7 +1080,7 @@ h5.widget-title {
     background-color: #000;
     border-radius: 50px;
     padding: 13px 28px;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .btn-default i {
@@ -1124,7 +1124,7 @@ h5.widget-title {
 }
 
 .btn {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .btn:hover {
@@ -1278,7 +1278,7 @@ button[type='submit']:hover {
     border: 0;
     padding: 14px 80px 14px 65px;
     background-repeat: no-repeat;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .btn.btn-brush i,
@@ -1419,7 +1419,7 @@ textarea:focus {
     line-height: 50px;
     font-size: 14px;
     padding: 0;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     color: #253D4E;
 }
 
@@ -1541,7 +1541,7 @@ textarea:focus {
     border: none;
     background-color: #253D4E;
     border-radius: 10px;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .contact-from-area .contact-form-style button:hover {
@@ -2660,7 +2660,7 @@ input.qty-val {
 }
 
 .account .card .table>thead {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 17px;
 }
 
@@ -2674,7 +2674,7 @@ input.qty-val {
 .card-login .social-login {
     font-size: 20px;
     font-weight: 700;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2743,7 +2743,7 @@ input.qty-val {
     border-right-color: currentcolor;
     border-bottom-color: currentcolor;
     border-left-color: currentcolor;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 600;
     line-height: 1;
 }
@@ -2809,7 +2809,7 @@ input.qty-val {
     font-size: 16px;
     color: #7E7E7E;
     padding: 15px 30px;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 700;
 }
 
@@ -2846,7 +2846,7 @@ input.qty-val {
 }
 
 .tab-header .view-more {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 13px;
     font-weight: 700;
     display: -webkit-box;
@@ -2899,7 +2899,7 @@ input.qty-val {
     height: 50px;
     line-height: 50px;
     text-align: center;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .deals-countdown .countdown-section .countdown-period {
@@ -3050,7 +3050,7 @@ input.qty-val {
     padding: 20px;
     background-color: #fff;
     border-bottom: 1px solid #ececec;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .breadcrumb {
@@ -4611,7 +4611,7 @@ table .product-thumbnail img {
 }
 
 .product-price {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .product-list-small article:not(:last-child) {
@@ -5273,7 +5273,7 @@ table .product-thumbnail img {
     padding: 8px 12px;
     border-radius: 5px;
     margin-bottom: 20px;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 14px;
     font-weight: 700;
     line-height: 1;
@@ -5387,7 +5387,7 @@ table .product-thumbnail img {
     line-height: 50px;
     font-weight: 700;
     font-size: 16px;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .product-extra-link2 .button.button-add-to-cart i {
@@ -5412,7 +5412,7 @@ table .product-thumbnail img {
     padding: 13px 24px !important;
     text-align: center;
     font-weight: 700;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     text-transform: none;
     font-size: 17px;
     border-radius: 30px;
@@ -5585,7 +5585,7 @@ table .product-thumbnail img {
     border: 1px solid #ececec;
     font-size: 17px;
     font-weight: 700;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
     padding: 10px 20px;
@@ -5671,7 +5671,7 @@ table .product-thumbnail img {
 .shopping-summery table thead th {
     background-color: #ececec;
     padding: 18px 0;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 17px;
     font-weight: 700;
     color: #253D4E;
@@ -5882,7 +5882,7 @@ table.no-border thead {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
     padding: 10px 20px;
     border: 1px solid #ececec;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 17px;
     font-weight: 700;
 }
@@ -6520,7 +6520,7 @@ h6.post-title {
     position: relative;
     overflow: hidden;
     text-align: center;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .invoice-content .btn-check:focus+.btn,
@@ -6589,7 +6589,7 @@ h6.post-title {
 }
 
 .invoice-content table thead {
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     color: #253D4E;
     font-weight: 700;
 }
@@ -7696,7 +7696,7 @@ h6.post-title {
     line-height: 1;
     padding: 10px 20px;
     background-color: black;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     border: 2px solid black;
 }
 
@@ -8374,7 +8374,7 @@ h6.post-title {
     color: black;
     font-size: 26px;
     font-weight: 700;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     display: block;
     line-height: 1;
 }
@@ -8553,7 +8553,7 @@ h6.post-title {
     line-height: 44px;
     border-radius: 5px;
     padding: 0 20px;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 16px;
 }
 
@@ -8643,7 +8643,7 @@ span.fi-rs-apps {
     font-size: 16px;
     font-weight: 700;
     color: #253D4E;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .main-menu>nav>ul>li>a i {
@@ -9222,7 +9222,7 @@ span.fi-rs-apps {
     color: black;
     position: relative;
     font-size: 13px;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -9360,7 +9360,7 @@ span.fi-rs-apps {
     line-height: 40px;
     text-align: center;
     font-weight: 700;
-    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 16px;
     background-color: #F2F3F4;
 }
