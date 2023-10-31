@@ -55,7 +55,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to="user_direcotry_path", default="product.jpg")
     description = models.TextField(null=True, blank=True, default="This is the product")
     
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name="category")
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     
     price = models.DecimalField(max_digits= 999999999, decimal_places=2, default="1000.00")
