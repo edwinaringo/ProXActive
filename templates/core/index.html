@@ -10,28 +10,22 @@
                     <section class="home-slider position-relative mb-30">
                         <div class="home-slide-cover mt-30">
                             <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
-                                <div class="single-hero-slider single-animation-wrap" style="background-image: url({% static 'assets/imgs/slider/slider-1.png' %})">
+                                <div class="single-hero-slider single-animation-wrap" style="background-image: url({% static 'assets/imgs/slider/gym1.jpg' %})">
                                     <div class="slider-content">
                                         <h1 class="display-2 mb-40">
-                                            Don’t miss amazing<br /> bottle deals
+                                            Don’t miss amazing<br /> accessory deals
                                         </h1>
-                                        <p class="mb-65">Sign up for the daily newsletter</p>
-                                        <form class="form-subcriber d-flex">
-                                            <input type="email" placeholder="Your email address" />
-                                            <button class="btn" type="submit">Subscribe</button>
-                                        </form>
+                                        <p class="mb-65"></p>
+                                        <button class="btn" type="submit">Start shoping</button>
                                     </div>
                                 </div>
-                                <div class="single-hero-slider single-animation-wrap" style="background-image: url({% static 'assets/imgs/slider/slider-2.png' %})">
+                                <div class="single-hero-slider single-animation-wrap" style="background-image: url({% static 'assets/imgs/slider/gym3.jpg' %})">
                                     <div class="slider-content">
                                         <h1 class="display-2 mb-40">
-                                            Great gym bottles <br /> Big discount
+                                            Your Goals, Our Gear,<br />One ProXActive Community.
                                         </h1>
                                         <p class="mb-65">Save up to 50% off on your first order</p>
-                                        <form class="form-subcriber d-flex">
-                                            <input type="email" placeholder="Your emaill address" />
-                                            <button class="btn" type="submit">Subscribe</button>
-                                        </form>
+                                        <button class="btn" type="submit">Start shoping</button>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +70,7 @@
                                         <div class="product-cart-wrap mb-30">
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
-                                                    <a href="shop-product-right.html">
+                                                    <a href="{% url 'prossyApp:product-detail' p.pid %}">
                                                         <img class="default-img" src="{{ p.image.url }}" alt="" />
                                                         <img class="hover-img" src="{{ p.image.url }}" alt="" />
                                                     </a>
@@ -92,9 +86,9 @@
                                             </div>
                                             <div class="product-content-wrap">
                                                 <div class="product-category">
-                                                    <a href="shop-grid-right.html">{{p.category}}</a>
+                                                    <a href="{% url 'prossyApp:category-product-list' p.category.cid %}">{{p.category}}</a>
                                                 </div>
-                                                <h2><a href="shop-product-right.html">{{ p.title }}</a></h2>
+                                                <h2><a href="{% url 'prossyApp:product-detail' p.pid %}">{{ p.title }}</a></h2>
                                                 <div class="product-rate-cover">
                                                     <div class="product-rate d-inline-block">
                                                         <div class="product-rating" style="width: 90%"></div>
@@ -2988,21 +2982,12 @@
                     <div class="sidebar-widget widget-category-2 mb-30">
                         <h5 class="section-title style-1 mb-30">Category</h5>
                         <ul>
+                            {% for c in categories %}
                             <li>
-                                <a href="shop-grid-right.html"> <img src="{% static 'assets/imgs/theme/icons/category-1.svg' %}" alt="" />Milks & Dairies</a><span class="count">30</span>
+                                <a href="{% url 'prossyApp:category-product-list' c.cid %}"> <img src="{{c.image.url}}" alt="" />{{c.title}}</a><span class="count">{{c.category.count}}</span>
                             </li>
-                            <li>
-                                <a href="shop-grid-right.html"> <img src="{% static 'assets/imgs/theme/icons/category-2.svg' %}" alt="" />Clothing</a><span class="count">35</span>
-                            </li>
-                            <li>
-                                <a href="shop-grid-right.html"> <img src="{% static 'assets/imgs/theme/icons/category-3.svg' %}" alt="" />Pet Foods </a><span class="count">42</span>
-                            </li>
-                            <li>
-                                <a href="shop-grid-right.html"> <img src="{% static 'assets/imgs/theme/icons/category-4.svg' %}" alt="" />Baking material</a><span class="count">68</span>
-                            </li>
-                            <li>
-                                <a href="shop-grid-right.html"> <img src="{% static 'assets/imgs/theme/icons/category-5.svg' %}" alt="" />Fresh Fruit</a><span class="count">87</span>
-                            </li>
+
+                            {% endfor %}
                         </ul>
                     </div>
                     <!-- Filter By Price -->
@@ -3102,7 +3087,7 @@
                 <div class="section-title">
                     <div class="title">
                         <h3>Shop by Categories</h3>
-                        <a class="show-all" href="shop-grid-right.html">
+                        <a class="show-all" href="{% url 'prossyApp:category-list' %}">
                             All Categories
                             <i class="fi-rs-angle-right"></i>
                         </a>
@@ -3111,91 +3096,17 @@
                 </div>
                 <div class="carausel-8-columns-cover position-relative">
                     <div class="carausel-8-columns" id="carausel-8-columns">
+                        {% for c in categories %}
                         <div class="card-1">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="{% static 'assets/imgs/theme/icons/category-1.svg' %}" alt="" /></a>
+                                <a href="{% url 'prossyApp:category-product-list' c.cid %}"><img src="{{c.image.url}}" alt="" /></a>
                             </figure>
                             <h6>
-                                <a href="shop-grid-right.html">Milks and <br />Dairies</a>
+                                <a href="{% url 'prossyApp:category-product-list' c.cid %}">{{c.title}}</a>
                             </h6>
+                           
                         </div>
-                        <div class="card-1">
-                            <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="{% static 'assets/imgs/theme/icons/category-2.svg' %}" alt="" /></a>
-                            </figure>
-                            <h6>
-                                <a href="shop-grid-right.html">Wines & <br />
-                                    Alcohol</a>
-                            </h6>
-                        </div>
-                        <div class="card-1">
-                            <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="{% static 'assets/imgs/theme/icons/category-3.svg' %}" alt="" /></a>
-                            </figure>
-                            <h6>
-                                <a href="shop-grid-right.html">Clothing & <br />Beauty</a>
-                            </h6>
-                        </div>
-                        <div class="card-1">
-                            <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="{% static 'assets/imgs/theme/icons/category-4.svg' %}" alt="" /></a>
-                            </figure>
-                            <h6>
-                                <a href="shop-grid-right.html">Pet Foods <br />& Toy</a>
-                            </h6>
-                        </div>
-                        <div class="card-1">
-                            <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="{% static 'assets/imgs/theme/icons/category-5.svg' %}" alt="" /></a>
-                            </figure>
-                            <h6>
-                                <a href="shop-grid-right.html">Packaged <br />fast food</a>
-                            </h6>
-                        </div>
-                        <div class="card-1">
-                            <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="{% static 'assets/imgs/theme/icons/category-6.svg' %}" alt="" /></a>
-                            </figure>
-                            <h6>
-                                <a href="shop-grid-right.html">Baking <br />material</a>
-                            </h6>
-                        </div>
-                        <div class="card-1">
-                            <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="{% static 'assets/imgs/theme/icons/category-7.svg' %}" alt="" /></a>
-                            </figure>
-                            <h6>
-                                <a href="shop-grid-right.html">Vegetables <br />& tubers</a>
-                            </h6>
-                        </div>
-                        <div class="card-1">
-                            <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="{% static 'assets/imgs/theme/icons/category-8.svg' %}" alt="" /></a>
-                            </figure>
-                            <h6>
-                                <a href="shop-grid-right.html">Fresh <br />Seafood</a>
-                            </h6>
-                        </div>
-                        <div class="card-1">
-                            <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="{% static 'assets/imgs/theme/icons/category-9.svg' %}" alt="" /></a>
-                            </figure>
-                            <h6>
-                                <a href="shop-grid-right.html">Noodles <br />Rice</a>
-                            </h6>
-                        </div>
-                        <div class="card-1">
-                            <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="{% static 'assets/imgs/theme/icons/category-10.svg' %}" alt="" /></a>
-                            </figure>
-                            <h6><a href="shop-grid-right.html">Fastfood</a></h6>
-                        </div>
-                        <div class="card-1">
-                            <figure class="img-hover-scale overflow-hidden">
-                                <a href="shop-grid-right.html"><img src="{% static 'assets/imgs/theme/icons/category-11.svg' %}" alt="" /></a>
-                            </figure>
-                            <h6><a href="shop-grid-right.html">Ice cream</a></h6>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

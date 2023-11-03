@@ -27,7 +27,7 @@ TABLE CONTENT
  Custom amine
 ***/
 
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@400;500;600;700&display=swap");
 /*import vendors*/
 
 @import url(vendors/normalize.css);
@@ -823,8 +823,8 @@ h6,
 .display-1,
 .display-2,
 .heading-sm-1 {
-    font-family: "Roboto", sans-serif;
-    color: #253D4E;
+    font-family: "Montserrat", sans-serif;
+    color: #000000;
     font-weight: 700;
     line-height: 1.2;
 }
@@ -1080,7 +1080,7 @@ h5.widget-title {
     background-color: #000;
     border-radius: 50px;
     padding: 13px 28px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .btn-default i {
@@ -1124,7 +1124,7 @@ h5.widget-title {
 }
 
 .btn {
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .btn:hover {
@@ -1278,7 +1278,7 @@ button[type='submit']:hover {
     border: 0;
     padding: 14px 80px 14px 65px;
     background-repeat: no-repeat;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .btn.btn-brush i,
@@ -1419,7 +1419,7 @@ textarea:focus {
     line-height: 50px;
     font-size: 14px;
     padding: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: #253D4E;
 }
 
@@ -1541,7 +1541,7 @@ textarea:focus {
     border: none;
     background-color: #253D4E;
     border-radius: 10px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .contact-from-area .contact-form-style button:hover {
@@ -2660,7 +2660,7 @@ input.qty-val {
 }
 
 .account .card .table>thead {
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 17px;
 }
 
@@ -2674,7 +2674,7 @@ input.qty-val {
 .card-login .social-login {
     font-size: 20px;
     font-weight: 700;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2743,7 +2743,7 @@ input.qty-val {
     border-right-color: currentcolor;
     border-bottom-color: currentcolor;
     border-left-color: currentcolor;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 600;
     line-height: 1;
 }
@@ -2809,7 +2809,7 @@ input.qty-val {
     font-size: 16px;
     color: #7E7E7E;
     padding: 15px 30px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
 }
 
@@ -2846,7 +2846,7 @@ input.qty-val {
 }
 
 .tab-header .view-more {
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 13px;
     font-weight: 700;
     display: -webkit-box;
@@ -2899,7 +2899,7 @@ input.qty-val {
     height: 50px;
     line-height: 50px;
     text-align: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .deals-countdown .countdown-section .countdown-period {
@@ -3050,7 +3050,7 @@ input.qty-val {
     padding: 20px;
     background-color: #fff;
     border-bottom: 1px solid #ececec;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .breadcrumb {
@@ -4418,7 +4418,7 @@ table .product-thumbnail img {
     padding: 6px 20px 6px 20px;
     border-radius: 4px;
     background-color: #DEF9EC;
-    font-size: 4px;
+    font-size: 14px;
     font-weight: 700;
 }
 
@@ -4611,7 +4611,7 @@ table .product-thumbnail img {
 }
 
 .product-price {
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .product-list-small article:not(:last-child) {
@@ -5273,7 +5273,7 @@ table .product-thumbnail img {
     padding: 8px 12px;
     border-radius: 5px;
     margin-bottom: 20px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 14px;
     font-weight: 700;
     line-height: 1;
@@ -5387,7 +5387,7 @@ table .product-thumbnail img {
     line-height: 50px;
     font-weight: 700;
     font-size: 16px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .product-extra-link2 .button.button-add-to-cart i {
@@ -5412,7 +5412,7 @@ table .product-thumbnail img {
     padding: 13px 24px !important;
     text-align: center;
     font-weight: 700;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     text-transform: none;
     font-size: 17px;
     border-radius: 30px;
@@ -5585,7 +5585,7 @@ table .product-thumbnail img {
     border: 1px solid #ececec;
     font-size: 17px;
     font-weight: 700;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
     padding: 10px 20px;
@@ -5671,7 +5671,7 @@ table .product-thumbnail img {
 .shopping-summery table thead th {
     background-color: #ececec;
     padding: 18px 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 17px;
     font-weight: 700;
     color: #253D4E;
@@ -5882,7 +5882,7 @@ table.no-border thead {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
     padding: 10px 20px;
     border: 1px solid #ececec;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 17px;
     font-weight: 700;
 }
@@ -6520,7 +6520,7 @@ h6.post-title {
     position: relative;
     overflow: hidden;
     text-align: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .invoice-content .btn-check:focus+.btn,
@@ -6589,7 +6589,7 @@ h6.post-title {
 }
 
 .invoice-content table thead {
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: #253D4E;
     font-weight: 700;
 }
@@ -7232,7 +7232,7 @@ h6.post-title {
     display: flex;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: center;
     -ms-flex-line-pack: center;
     align-content: center;
     -webkit-box-align: center;
@@ -7243,7 +7243,7 @@ h6.post-title {
 .header-wrap.header-space-between {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .header-wrap .header-right {
@@ -7321,7 +7321,7 @@ h6.post-title {
 }
 
 .header-action-2 .header-action-icon-2 span.lable {
-    font-size: 16px;
+    font-size: 13px;
     margin: 5px 0 0 10px;
 }
 
@@ -7339,7 +7339,8 @@ h6.post-title {
 
 .header-action-2 .header-action-icon-2>a img {
     width: 100%;
-    max-width: 25px;
+    max-width: 22px;
+    margin:.5rem
 }
 
 .header-action-2 .header-action-icon-2>a span {
@@ -7349,11 +7350,11 @@ h6.post-title {
 
 .header-action-2 .header-action-icon-2>a span.pro-count {
     position: absolute;
-    right: -11px;
-    top: -5px;
+    right: -8px;
+    top: -4px;
     color: #ffffff;
-    height: 20px;
-    width: 20px;
+    height: 18px;
+    width: 18px;
     border-radius: 100%;
     font-weight: 500;
     font-size: 12px;
@@ -7696,7 +7697,7 @@ h6.post-title {
     line-height: 1;
     padding: 10px 20px;
     background-color: black;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     border: 2px solid black;
 }
 
@@ -8374,7 +8375,7 @@ h6.post-title {
     color: black;
     font-size: 26px;
     font-weight: 700;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     display: block;
     line-height: 1;
 }
@@ -8553,7 +8554,7 @@ h6.post-title {
     line-height: 44px;
     border-radius: 5px;
     padding: 0 20px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 16px;
 }
 
@@ -8565,7 +8566,7 @@ h6.post-title {
 }
 
 .header-style-1 .main-categori-wrap>a:hover {
-    background-color: #29A56C;
+    background-color: #000000;
 }
 
 .header-style-1 .main-menu.main-menu-light-white>nav>ul>li>a {
@@ -8643,7 +8644,7 @@ span.fi-rs-apps {
     font-size: 16px;
     font-weight: 700;
     color: #253D4E;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 .main-menu>nav>ul>li>a i {
@@ -9222,7 +9223,7 @@ span.fi-rs-apps {
     color: black;
     position: relative;
     font-size: 13px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -9360,7 +9361,7 @@ span.fi-rs-apps {
     line-height: 40px;
     text-align: center;
     font-weight: 700;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 16px;
     background-color: #F2F3F4;
 }
@@ -9747,9 +9748,9 @@ footer .hotline img {
 }
 
 .newsletter .newsletter-inner {
-    background: url(../imgs/banner/banner-10.png) no-repeat center;
+    background: url(../imgs/banner/gym4.jpg) no-repeat center;
     background-size: cover;
-    padding: 84px 78px;
+    padding: 84px 78px; 
     clear: both;
     display: table;
     width: 100%;
@@ -12062,7 +12063,7 @@ footer .hotline img {
         height: 350px;
     }
     .hero-slider-1 .single-hero-slider .display-2 {
-        font-size: 46px;
+        font-size: 36px;
         margin-bottom: 25px !important;
     }
     .hero-slider-1 .single-hero-slider .slider-content p {
