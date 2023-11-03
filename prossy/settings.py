@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     
+    #third party
+    'taggit',
+    
     #Custom Apps
     'prossyApp',
     'userauths'

@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from taggit.models import Tag
 
 from prossyApp.models import Product, Category, CartOrder, CartOrderItems, ProductImages, ProductReview, Address, Wishlist
 
@@ -59,3 +60,17 @@ def product_detail_view(request, pid):
     }
     
     return render(request, "core/product-detail.html", context)
+
+def tag_list(request, tag_slug=None):
+    products = Product.objects.filter(product_status="published").order_by("-id")
+    
+    tag = None
+    if tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        products = products.filter(tags__in=[tag])
+        
+        context = {
+            "products": products
+        }
+        
+        return render (request, "core/tag.html", context)
