@@ -3,6 +3,7 @@ from shortuuid.django_fields import ShortUUIDField
 from django.utils.html import mark_safe
 from userauths.models import User
 from taggit.managers import TaggableManager
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 STATUS_CHOICE = (
@@ -54,7 +55,8 @@ class Product(models.Model):
     pid = ShortUUIDField(unique=True, length=10, max_length=20, prefix="prd", alphabet="abcdefg123456")  
     title = models.CharField(max_length=100, default="Pink Bottle")
     image = models.ImageField(upload_to="user_direcotry_path", default="product.jpg")
-    description = models.TextField(null=True, blank=True, default="This is the product")
+    # description = models.TextField(null=True, blank=True, default="This is the product")
+    description = RichTextUploadingField(null=True, blank=True, default="This is the product")
     
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name="category")
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -62,7 +64,9 @@ class Product(models.Model):
     price = models.DecimalField(max_digits= 999999999, decimal_places=2, default="1000.00")
     old_price = models.DecimalField(max_digits= 999999999, decimal_places=2, default="1500.00")
     
-    specifications = models.TextField(null=True, blank=True, default="This is pink, like barbie")
+    # specifications = models.TextField(null=True, blank=True, default="This is pink, like barbie")\
+    specifications = RichTextUploadingField(null=True, blank=True, default="This is pink, like barbie")
+
     type = models.CharField(max_length=100, default="Bottle",  null=True, blank=True)
     stock_count = models.CharField(max_length=100, default="10", null=True, blank=True)
 

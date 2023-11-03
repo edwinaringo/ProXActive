@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("prossyApp.urls")),
     path("user/", include("userauths.urls")),
+    
+    path("ckeditor", include("ckeditor_uploader.urls")),
 
 ]
 
