@@ -1,6 +1,6 @@
 from django.urls import path
 from prossyApp import views
-from prossyApp.views import ajax_add_review, category_list_view, category_product_list_view, index, product_detail_view, product_list_view, tag_list
+from prossyApp.views import ajax_add_review, category_list_view, category_product_list_view, filter_product, index, product_detail_view, product_list_view, search_view, tag_list
 
 app_name = 'prossyApp'
 
@@ -20,7 +20,12 @@ urlpatterns = [
     path("products/tag/<slug:tag_slug>/", tag_list, name="tags"),
     
     #reviews
-    path("ajax-add-review/<int:pid>/", ajax_add_review, name="ajax-add-review")
+    path("ajax-add-review/<int:pid>/", ajax_add_review, name="ajax-add-review"),
+    
+    #search
+    path("search/", search_view, name="search"),
+    
+    path("filter-products/", filter_product, name="filter-product")
     
 
 

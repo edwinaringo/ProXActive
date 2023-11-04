@@ -30,6 +30,12 @@ RATING = (
 
 )
 
+GENDER = (
+    ("women", "women"),
+    ("men", "men"),
+    ("all", "all"),
+)
+
 
 def user_directory_path(instance, filename):
     return 'user_{0}/{1}'.format(instance.user.id, filename)
@@ -57,6 +63,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to="user_direcotry_path", default="product.jpg")
     # description = models.TextField(null=True, blank=True, default="This is the product")
     description = RichTextUploadingField(null=True, blank=True, default="This is the product")
+    gender = models.CharField(choices = GENDER, max_length=100, default="Women")
     
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name="category")
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

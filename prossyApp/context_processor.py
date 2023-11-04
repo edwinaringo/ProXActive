@@ -1,8 +1,9 @@
 
-from prossyApp.models import Product, Category, CartOrder, CartOrderItems, ProductImages, ProductReview, Address, Wishlist
+from prossyApp.models import Category, Address, Product
 
 def default(request):
     categories = Category.objects.all()
+    # tags = Product.objects.filter(tags=tags)
     
     try:
         address = Address.objects.get(user=request.user)
@@ -12,4 +13,5 @@ def default(request):
     return {
         'categories': categories,
         'address':address,
+        # 'tags':tags,
     }

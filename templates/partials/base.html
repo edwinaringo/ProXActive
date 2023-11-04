@@ -189,9 +189,10 @@
                     </div>
                     <div class="header-right">
                         <div class="search-style-2">
-                            <form action="#">
+                            <form action="{% url 'prossyApp:search' %}" method="GET">
    
-                                <input type="text" placeholder="Search for items..." />
+                                <input type="text" placeholder="Search for items..." name="q" />
+                                <button class="fas fa-search" type="submit"></button>
                             </form>
                         </div>
                         <div class="header-action-right">
@@ -486,7 +487,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="{% url 'prossyApp:product-list' %}">Gifts</a>
+                                        <a href="{% url 'prossyApp:product-list' %}">All</a>
                                     </li>
                                 </ul>
                             </nav>

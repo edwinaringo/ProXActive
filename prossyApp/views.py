@@ -1,8 +1,9 @@
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from taggit.models import Tag
-from django.db.models import Count, Avg
+from django.db.models import Avg
 from prossyApp.forms import ProductReviewForm
+from django.template.loader import render_to_string
 
 from prossyApp.models import Product, Category, CartOrder, CartOrderItems, ProductImages, ProductReview, Address, Wishlist
 
@@ -128,3 +129,30 @@ def ajax_add_review(request, pid):
         }
         
     )
+    
+def search_view(request):
+    query = request.GET.get("q")
+    
+    products = Product.objects.filter(title__icontains=query).order_by("-date")
+    
+    context = {
+        "products": products,
+        "query": query,
+    }
+    
+    return render(request, "core/search.html", context)
+
+def filter_product(request):
+    categories = request.GET.getlist('category[]')
+    tags = request.GET.getlist('tags[]')
+    
+    products = Product.objects.filter(product_status = "published").order_by("-id").distinct()
+    
+    if len(categories) > 0:
+        products = products.filter(category__id__in=categories).distinct()
+        
+    if len(tags) > 0:
+        products = products.filter(tags__id__in=tags).distinct()
+        
+    data = render_to_string("core/async/product-list.html", {"products": products})
+    return JsonResponse({"data": data})
