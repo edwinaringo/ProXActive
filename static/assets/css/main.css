@@ -4415,10 +4415,11 @@ table .product-thumbnail img {
 .product-cart-wrap .product-card-bottom .add-cart .add {
     position: relative;
     display: inline-block;
-    padding: 6px 20px 6px 20px;
+    padding: 6px 10px 6px 10px;
     border-radius: 4px;
-    background-color: #DEF9EC;
+    background-color: #000000;
     font-size: 14px;
+    color: #FFFFFF;
     font-weight: 700;
 }
 
