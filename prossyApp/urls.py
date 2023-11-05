@@ -1,6 +1,6 @@
 from django.urls import path
 from prossyApp import views
-from prossyApp.views import add_to_cart, ajax_add_review, category_list_view, category_product_list_view, filter_product, index, product_detail_view, product_list_view, search_view, tag_list
+from prossyApp.views import add_to_cart, ajax_add_review, cart_view, category_list_view, category_product_list_view, filter_product, index, product_detail_view, product_list_view, search_view, tag_list
 
 app_name = 'prossyApp'
 
@@ -30,6 +30,11 @@ urlpatterns = [
     
     #add to cart
     path("add-to-cart/", add_to_cart, name="add-to-cart"),
+    
+    #cart page url
+    path("cart/", cart_view, name="cart"),
+
+    
 
     
 

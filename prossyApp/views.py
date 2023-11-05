@@ -1,10 +1,10 @@
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from taggit.models import Tag
 from django.db.models import Avg
 from prossyApp.forms import ProductReviewForm
 from django.template.loader import render_to_string
-
+from django.contrib import messages
 from prossyApp.models import Product, Category, CartOrder, CartOrderItems, ProductImages, ProductReview, Address, Wishlist
 
 
@@ -197,3 +197,23 @@ def add_to_cart(request):
         
     return JsonResponse({"data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj'])})
     
+    
+def cart_view(request):
+    cart_total_amount = 0
+    if 'cart_data_obj' in request.session:
+        cart_total_amount = 0  # Initialize the total amount to zero
+
+        for p_id, item in request.session['cart_data_obj'].items():
+            qty = int(item['qty'])
+            price_str = item['price']
+
+            # Check if price_str is a valid numeric string
+            if price_str.replace(".", "", 1).isdigit():
+                price = float(price_str)
+                cart_total_amount += qty * price
+
+            return render(request, "core/cart.html", {"cart_data": request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount': cart_total_amount})
+        else:
+            messages.warning(request, "Your basket is empty")
+            return redirect("prossyApp:index")
+       
