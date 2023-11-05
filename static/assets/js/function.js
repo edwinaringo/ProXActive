@@ -63,10 +63,18 @@ $("#commentForm").submit(function(e){
 })
 
 $(document).ready(function(){
-    $(".filter-checkbox").on("click", function(){
+    $(".filter-checkbox, #price-filter-btn").on("click", function(){
         console.log("Checkbox clicked")
 
         let filter_object = {}
+
+        let min_price = $("#max_price").attr("min")
+        let max_price = $("#max_price").val()
+
+        filter_object.min_price = min_price
+        filter_object.max_price = max_price
+
+
 
         $(".filter-checkbox").each(function(){
             let filter_value = $(this).val()
