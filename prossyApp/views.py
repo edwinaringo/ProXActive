@@ -7,6 +7,11 @@ from django.template.loader import render_to_string
 from django.contrib import messages
 from prossyApp.models import Product, Category, CartOrder, CartOrderItems, ProductImages, ProductReview, Address, Wishlist
 
+from django.urls import reverse
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from paypal.standard.forms import PayPalPaymentsForm
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     # products = Product.objects.all()
@@ -262,8 +267,24 @@ def update_cart(request):
     
     return JsonResponse({"data": context, 'totalcartitems': len(request.session['cart_data_obj'])})
 
-        
+     
+@login_required   
 def checkout_view(request):
+    
+    host = request.get_host()
+    paypal_dict = {
+        'business': settings.PAYPAL_RECEIVER_EMAIL,
+        'amount': '200',
+        'item_name': 'Order-Item-No-3',
+        'invoice': "INVOICE_NO-3",
+        'currency_code': "USD",
+        'notify_url': 'http://{}{}'.format(host, reverse("prossyApp:paypal-ipn")),
+        'return_url': 'http://{}{}'.format(host, reverse("prossyApp:payment-completed")),
+        'cancel_url': 'http://{}{}'.format(host, reverse("prossyApp:payment-failed")),
+    }
+    
+    paypal_payment_button = PayPalPaymentsForm(initial=paypal_dict)
+    
     
     cart_total_amount = 0
     if 'cart_data_obj' in request.session:
@@ -272,4 +293,11 @@ def checkout_view(request):
             
     context = render_to_string("core/async/cart-list.html", {"cart_data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount':cart_total_amount})
         
-    return render(request, "core/checkout.html", {"cart_data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount':cart_total_amount})
+    return render(request, "core/checkout.html", {"cart_data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount':cart_total_amount,'paypal_payment_button' : paypal_payment_button})
+
+
+def payment_completed_view(request):
+    return render(request, 'core/payment-completed.html')
+
+def payment_failed_view(request):
+    return render(request, 'core/payment-failed.html')

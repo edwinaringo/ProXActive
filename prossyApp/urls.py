@@ -1,6 +1,6 @@
-from django.urls import path
+from django.urls import include, path
 from prossyApp import views
-from prossyApp.views import add_to_cart, ajax_add_review, cart_view, category_list_view, category_product_list_view, checkout_view, delete_item_from_cart, filter_product, index, product_detail_view, product_list_view, search_view, tag_list, update_cart
+from prossyApp.views import add_to_cart, ajax_add_review, cart_view, category_list_view, category_product_list_view, checkout_view, delete_item_from_cart, filter_product, index, payment_completed_view, payment_failed_view, product_detail_view, product_list_view, search_view, tag_list, update_cart
 
 app_name = 'prossyApp'
 
@@ -42,6 +42,16 @@ urlpatterns = [
     
      #updating cart
     path("checkout/", checkout_view, name="checkout"),
+    
+    #Paypal payment
+    path("paypal/", include("paypal.standard.ipn.urls")),
+    
+    #payment completed
+    path("payment-completed/", payment_completed_view, name="payment-completed"),
+
+    #payment failed
+    path("payment-failed/", payment_failed_view, name="payment-failed"),
+
 
 
 

@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'taggit',
     'ckeditor',
     
+    #payment intergration
+    'paypal.standard.ipn',
+    
     #Custom Apps
     'prossyApp',
     'userauths'
@@ -150,6 +153,8 @@ JAZZMIN_SETTINGS = {
 
 }
 
+LOGIN_URL = "userauths:sign-in"
+
 AUTH_USER_MODEL = 'userauths.User'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
@@ -168,3 +173,6 @@ CKEDITOR_CONFIGS = {
         ),
     }
 }
+
+PAYPAL_RECEIVER_EMAIL = 'sb-pvosy28100602@business.example.com'
+PAYPAL_TEST = True
