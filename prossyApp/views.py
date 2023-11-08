@@ -199,21 +199,49 @@ def add_to_cart(request):
     
     
 def cart_view(request):
+    
     cart_total_amount = 0
     if 'cart_data_obj' in request.session:
-        cart_total_amount = 0  # Initialize the total amount to zero
-
         for p_id, item in request.session['cart_data_obj'].items():
-            qty = int(item['qty'])
-            price_str = item['price']
+            cart_total_amount += int(item['qty']) * float(item['price'])
+        return render(request, "core/cart.html", {"cart_data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount':cart_total_amount})
+    else:
+        messages.warning(request, "Your cart is empty")
+        return redirect("prossyApp:index")
+    # cart_total_amount = 0
+    # if 'cart_data_obj' in request.session:
+    #     for p_id, item in request.session['cart_data_obj'].items():
+    #         qty = int(item['qty'])
+    #         price_str = item['price']
 
-            # Check if price_str is a valid numeric string
-            if price_str.replace(".", "", 1).isdigit():
-                price = float(price_str)
-                cart_total_amount += qty * price
+    #         # Check if price_str is a valid numeric string
+    #         if price_str.replace(".", "", 1).isdigit():
+    #             price = float(price_str)
+    #             cart_total_amount += qty * price
 
-            return render(request, "core/cart.html", {"cart_data": request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount': cart_total_amount})
-        else:
-            messages.warning(request, "Your basket is empty")
-            return redirect("prossyApp:index")
-       
+    #         return render(request, "core/cart.html", {"cart_data": request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount': cart_total_amount})
+    # else:
+    #     messages.warning(request, "Your basket is empty")
+    #     return redirect("prossyApp:index")
+
+
+def delete_item_from_cart(request):
+    product_id = str(request.GET['id'])
+    if 'cart_data_obj' in request.session:
+        if product_id in request.session['cart_data_obj']:
+            cart_data = request.session['cart_data_obj']
+            del request.session['cart_data_obj'][product_id]
+            request.session['cart_data_obj'] = cart_data
+        
+    cart_total_amount = 0
+    if 'cart_data_obj' in request.session:
+        for p_id, item in request.session['cart_data_obj'].items():
+            cart_total_amount += int(item['qty']) * float(item['price'])
+            
+    context = render_to_string("core/async/cart-list.html", {"cart_data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount':cart_total_amount})
+    
+    return JsonResponse({"data": context, 'totalcartitems': len(request.session['cart_data_obj'])})
+
+            
+        
+        
