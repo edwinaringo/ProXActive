@@ -15,18 +15,23 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     # products = Product.objects.all()
-    
-    products = Product.objects.filter(product_status="published", featured=True)
-    
+    products = Product.objects.filter(product_status="published", featured=True, in_stock=True)
+
+ 
     context = {
-        "products": products
+        "products": products,
+
     }
     
     return render(request, 'core/index.html', context)
 
+#about page
+def about(request):
+    return render(request, 'core/about.html')
+
 def product_list_view(request):
     
-    products = Product.objects.filter(product_status="published")
+    products = Product.objects.filter(product_status="published", in_stock=True)
     
     context = {
         "products": products

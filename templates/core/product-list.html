@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> Shop <span></span> Fillter
+                    <span></span> Products <span></span>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-xl-3 col-lg-6 col-md-6 mb-lg-0 mb-md-2 mb-sm-2">
                                 <div class="card">
-                                    <h5 class="mb-30">By Categories</h5>
+                                    <h5 class="mb-30">By Category</h5>
                                     <div class="categories-dropdown-wrap font-heading">
                                         <ul>
                                           {% for c in categories %}
@@ -45,9 +45,9 @@
                                     <h5 class="mb-30">By Tags</h5>
                                     <div class="sidebar-widget widget-tags">
                                         <ul class="tags-list">
-                                           {% for t in tags %}
+                                            {% for tag in p.tags.all %}
                                             <li class="hover-up">
-                                                <a href="{% url 'prossyApp:tags' t.slug %}"><i class="fi-rs-cross mr-10"></i>{{t}}</a>
+                                                <a href="{% url 'prossyApp:tags' tag.slug %}" rel="tag"> {{tag.name}}</a>
                                             </li>
                                            {% endfor %}
                                         </ul>
@@ -63,8 +63,8 @@
                                                 <div id="slidder-range" class="mb-20"></div>
                                                 <input type="range" name="ranDge" value="{{ min_max_price.price__min|floatformat:0 }}" class="slider-range" id="range" min="{{ min_max_price.price__min }}" max="{{ min_max_price.price__max }}" oninput="max_price.value=this.value">
                                                 <div class="d-flex justify-content-between">
-                                                    <div class="caption">From: <strong id="slider-range-value1" class="text-brand">KES {{ min_max_price.price__min|floatformat:0 }}</strong></div>
-                                                    <div class="caption">To: <strong id="slider-range-value2" class="text-brand">KES {{ min_max_price.price__max|floatformat:0 }}</strong></div>
+                                                    <div class="caption">From: <strong id="slider-range-value1" class="text-brand">KSh {{ min_max_price.price__min|floatformat:0 }}</strong></div>
+                                                    <div class="caption">To: <strong id="slider-range-value2" class="text-brand">KSh {{ min_max_price.price__max|floatformat:0 }}</strong></div>
                                                 </div>
                                                 <input type="number"  name="" value="{{ min_max_price.price__min|floatformat:0 }}" id="max_price" min="{{ min_max_price.price__min }}" max="{{ min_max_price.price__max }}" placeholder="Current Price" onkeyup="range.value=this.value">
                                             </div>
@@ -143,9 +143,9 @@
                                         <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                         <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                     </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                    {% comment %} <div class="product-badges product-badges-position product-badges-mrg">
                                         <span class="hot">-{{p.get_percentage|floatformat:0}}%</span>
-                                    </div>
+                                    </div> {% endcomment %}
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
@@ -160,8 +160,8 @@
                                     </div>
                                     <div class="product-card-bottom">
                                         <div class="product-price">
-                                            <span class="current-product-price-{{p.id}}">{{p.price}}</span>
-                                            <span class="old-price">{{p.old_price}}</span>
+                                            <span class="current-product">Ksh </span><span class="current-product-price-{{p.id}}">{{p.price|floatformat:0}}</span>
+                                            <span class="old-price">{{p.old_price|floatformat}}</span>
                                         </div>
                                         <div class="add-cart">
                                             <input type="hidden" value="1" id="product-quantity" class="product-quantity-{{p.id}}">
@@ -182,7 +182,7 @@
                         <!--end product card-->
                     </div>
                     <!--product grid-->
-                    <div class="pagination-area mt-20 mb-20">
+                    {% comment %} <div class="pagination-area mt-20 mb-20">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
                                 <li class="page-item">
@@ -198,8 +198,8 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div>
-                    <section class="section-padding pb-5">
+                    </div> {% endcomment %}
+                    {% comment %} <section class="section-padding pb-5">
                         <div class="section-title">
                             <h3 class="">Deals Of The Day</h3>
                             <a class="show-all" href="shop-grid-right.html">
@@ -357,7 +357,7 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section> {% endcomment %}
                     <!--End Deals-->
                 </div>
             </div>

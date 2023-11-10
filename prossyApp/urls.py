@@ -1,6 +1,6 @@
 from django.urls import include, path
 from prossyApp import views
-from prossyApp.views import add_to_cart, ajax_add_review, cart_view, category_list_view, category_product_list_view, checkout_view, delete_item_from_cart, filter_product, index, payment_completed_view, payment_failed_view, product_detail_view, product_list_view, search_view, tag_list, update_cart
+from prossyApp.views import about, add_to_cart, ajax_add_review, cart_view, category_list_view, category_product_list_view, checkout_view, delete_item_from_cart, filter_product, index, payment_completed_view, payment_failed_view, product_detail_view, product_list_view, search_view, tag_list, update_cart
 
 app_name = 'prossyApp'
 
@@ -10,6 +10,9 @@ urlpatterns = [
     path("", index, name="index"),
     path("products/", product_list_view, name="product-list"),
     path("product/<pid>/", product_detail_view, name="product-detail"),
+    
+    #about page
+    path("about/", about, name="about"),
 
     
     #category

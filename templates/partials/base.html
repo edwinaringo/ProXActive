@@ -126,7 +126,7 @@
                     <div class="col-xl-3 col-lg-4">
                         <div class="header-info">
                             <ul>
-                                <li><a href="page-about.htlm">About Us</a></li>
+                                <li><a href="{% url 'prossyApp:about' %}">About Us</a></li>
                                 <li><a href="page-account.html">My Account</a></li>
                                 <li><a href="shop-wishlist.html">Wishlist</a></li>
                                 <li><a href="shop-order.html">Order Tracking</a></li>
@@ -138,8 +138,8 @@
                             <div id="news-flash" class="d-inline-block">
                                 <ul>
                                     <li>100% Secure delivery without contacting the courier</li>
-                                    <li>Supper Value Deals - Save more with coupons</li>
-                                    <li>Trendy 25silver jewelry, save up 35% off today</li>
+                                    <li>Supper Value Deals - Save with ProXActive</li>
+                                    <li>Trendy bottles</li>
                                 </ul>
                             </div>
                         </div>
@@ -331,7 +331,8 @@
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
                             <nav>
                                 <ul>
-                                    <li class="position-static">
+
+                                    {% comment %} <li class="position-static">
                                         <a href="#">Women<i class="fi-rs-angle-down"></i></a>
                                         <ul class="mega-menu">
                                             <li class="sub-mega-menu sub-mega-menu-width-22">
@@ -408,7 +409,7 @@
                                             </li>
                                            
                                         </ul>
-                                    </li>
+                                    </li> {% endcomment %}
                                     <li class="position-static">
                                         <a href="#">Accessories<i class="fi-rs-angle-down"></i></a>
                                         <ul class="mega-menu">
@@ -649,7 +650,7 @@
                             <li class="menu-item-has-children">
                                 <a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="page-about.html">About Us</a></li>
+                                    <li><a href="{% url 'prossyApp:about' %}">About Us</a></li>
                                     <li><a href="page-contact.html">Contact</a></li>
                                     <li><a href="page-account.html">My Account</a></li>
                                     <li><a href="page-login.html">Login</a></li>
@@ -743,7 +744,7 @@
                     <div class="footer-link-widget col">
                         <h4 class="widget-title">Company</h4>
                         <ul class="footer-list mb-sm-5 mb-md-0">
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="{% url 'prossyApp:about' %}">About Us</a></li>
                             <li><a href="#">Delivery Information</a></li>
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Terms &amp; Conditions</a></li>
