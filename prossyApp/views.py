@@ -276,13 +276,42 @@ def update_cart(request):
 @login_required   
 def checkout_view(request):
     
+    cart_total_amount = 0
+    total_amount = 0
+    
+    if 'cart_data_obj' in request.session:
+        
+        #get paypal total amount
+        for p_id, item in request.session['cart_data_obj'].items():
+            total_amount += int(item['qty']) * float(item['price'])
+            
+        order = CartOrder.objects.create(
+            user=request.user,
+            price= total_amount,
+        )
+        
+        # Getting the cart total amount
+        for p_id, item in request.session['cart_data_obj'].items():
+            cart_total_amount += int(item['qty']) * float(item['price'])
+            
+            cart_order_items = CartOrderItems.objects.create(
+                order=order,
+                invoice_no = "INVOICE_NO-" + str(order.id),
+                item=item['title'],
+                image=item['image'],
+                qty=item['qty'],
+                price=item['price'],
+                total=float(item['qty']) * float(item['price'])
+
+            )
+    
     host = request.get_host()
     paypal_dict = {
         'business': settings.PAYPAL_RECEIVER_EMAIL,
-        'amount': '200',
-        'item_name': 'Order-Item-No-3',
-        'invoice': "INVOICE_NO-3",
-        'currency_code': "USD",
+        'amount': cart_total_amount,
+        'item_name': 'Order-Item-No-' + str(order.id),
+        'invoice': "INVOICE_NO-" + str(order.id),
+        'currency_code': "USD", 
         'notify_url': 'http://{}{}'.format(host, reverse("prossyApp:paypal-ipn")),
         'return_url': 'http://{}{}'.format(host, reverse("prossyApp:payment-completed")),
         'cancel_url': 'http://{}{}'.format(host, reverse("prossyApp:payment-failed")),
@@ -296,13 +325,17 @@ def checkout_view(request):
         for p_id, item in request.session['cart_data_obj'].items():
             cart_total_amount += int(item['qty']) * float(item['price'])
             
-    context = render_to_string("core/async/cart-list.html", {"cart_data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount':cart_total_amount})
+    # context = render_to_string("core/async/cart-list.html", {"cart_data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount':cart_total_amount})
         
     return render(request, "core/checkout.html", {"cart_data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount':cart_total_amount,'paypal_payment_button' : paypal_payment_button})
 
 
 def payment_completed_view(request):
-    return render(request, 'core/payment-completed.html')
+    cart_total_amount = 0
+    if 'cart_data_obj' in request.session:
+        for p_id, item in request.session['cart_data_obj'].items():
+            cart_total_amount += int(item['qty']) * float(item['price'])
+    return render(request, 'core/payment-completed.html',  {'cart_data':request.session['cart_data_obj'],'totalcartitems':len(request.session['cart_data_obj']),'cart_total_amount':cart_total_amount})
 
 def payment_failed_view(request):
     return render(request, 'core/payment-failed.html')
