@@ -1,6 +1,6 @@
 from django.urls import include, path
 from prossyApp import views
-from prossyApp.views import about, add_to_cart, ajax_add_review, cart_view, category_list_view, category_product_list_view, checkout_view, delete_item_from_cart, filter_product, index, payment_completed_view, payment_failed_view, product_detail_view, product_list_view, search_view, tag_list, update_cart
+from prossyApp.views import about, add_to_cart, add_to_wishlist, ajax_add_review, cart_view, category_list_view, category_product_list_view, checkout_view, customer_dashboard, delete_item_from_cart, filter_product, index, make_address_default, order_detail, payment_completed_view, payment_failed_view, product_detail_view, product_list_view, remove_wishlist, search_view, tag_list, update_cart, wishlist_view
 
 app_name = 'prossyApp'
 
@@ -54,11 +54,29 @@ urlpatterns = [
 
     #payment failed
     path("payment-failed/", payment_failed_view, name="payment-failed"),
+    
+    #customer dashboard
+    path("dashboard/", customer_dashboard, name="dashboard"),
 
-
-
-
+    #order detail dashboard
+    path("dashboard/order/<int:id>", order_detail, name="order-detail"),
     
 
+   #order detail dashboard
+    path("make-default-address/", make_address_default, name="make-default-address"),
+      
+    #wishlist
+    path("wishlist/", wishlist_view, name="wishlist"),
 
+    #add to wishlist
+    path("add-to-wishlist/", add_to_wishlist, name="add-to-wishlist"),
+    
+    #delete from wishlist
+    path("remove-from-wishlist/", remove_wishlist, name="remove-from-wishlist"),   
+    
+    
+    
+    
+    
+    
 ]

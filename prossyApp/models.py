@@ -69,7 +69,7 @@ class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     
     price = models.DecimalField(max_digits= 999999999, decimal_places=2, default="1000.00")
-    old_price = models.DecimalField(max_digits= 999999999, decimal_places=2, default="1500.00")
+    old_price = models.DecimalField(max_digits= 999999999, decimal_places=2, blank=True, null=True)
     
     # specifications = models.TextField(null=True, blank=True, default="This is pink, like barbie")\
     specifications = RichTextUploadingField(null=True, blank=True, default="This is pink, like barbie")
@@ -172,7 +172,7 @@ class ProductReview(models.Model):
         return self.rating
     
 
-class Wishlist (models.Model):
+class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     date = models.DateTimeField(auto_now_add=True)
@@ -187,6 +187,7 @@ class Wishlist (models.Model):
 
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    mobile = models.CharField(max_length=300, null=True)
     address = models.CharField(max_length=100, null=True)
     status = models.BooleanField(default=False)
 

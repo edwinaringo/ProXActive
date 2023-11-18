@@ -1168,11 +1168,11 @@ button[type='submit'] {
 
 button.submit:hover,
 button[type='submit']:hover {
-    background-color: black !important;
+    background-color: red !important;
 }
 
 .btn-brand:hover {
-    background-color: black !important;
+    background-color: red !important;
 }
 
 .btn-login {
@@ -1218,7 +1218,7 @@ button[type='submit']:hover {
 
 .btn:hover,
 .button:hover {
-    background-color: #FDC040;
+    background-color: #ff0000;
 }
 
 .btn.btn-sm,

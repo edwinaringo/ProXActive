@@ -1,17 +1,22 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.core import serializers
 from taggit.models import Tag
 from django.db.models import Avg
 from prossyApp.forms import ProductReviewForm
 from django.template.loader import render_to_string
 from django.contrib import messages
 from prossyApp.models import Product, Category, CartOrder, CartOrderItems, ProductImages, ProductReview, Address, Wishlist
-
+from userauths.models import ContactUs, Profile
 from django.urls import reverse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from paypal.standard.forms import PayPalPaymentsForm
 from django.contrib.auth.decorators import login_required
+
+import calendar
+from django.db.models import Count, Avg
+from django.db.models.functions import ExtractMonth
 
 def index(request):
     # products = Product.objects.all()
@@ -320,14 +325,18 @@ def checkout_view(request):
     paypal_payment_button = PayPalPaymentsForm(initial=paypal_dict)
     
     
-    cart_total_amount = 0
-    if 'cart_data_obj' in request.session:
-        for p_id, item in request.session['cart_data_obj'].items():
-            cart_total_amount += int(item['qty']) * float(item['price'])
+    # cart_total_amount = 0
+    # if 'cart_data_obj' in request.session:
+    #     for p_id, item in request.session['cart_data_obj'].items():
+    #         cart_total_amount += int(item['qty']) * float(item['price'])
+    
+    try:
+        active_address = Address.objects.get(user=request.user, status=True)
+    except:
+        messages.warning(request, "There are multiple addresses, only one should be activated.")
+        active_address = None    
             
-    # context = render_to_string("core/async/cart-list.html", {"cart_data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount':cart_total_amount})
-        
-    return render(request, "core/checkout.html", {"cart_data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount':cart_total_amount,'paypal_payment_button' : paypal_payment_button})
+    return render(request, "core/checkout.html", {"cart_data":request.session['cart_data_obj'], 'totalcartitems': len(request.session['cart_data_obj']), 'cart_total_amount':cart_total_amount,'paypal_payment_button' : paypal_payment_button, "active_address":active_address})
 
 
 def payment_completed_view(request):
@@ -338,4 +347,111 @@ def payment_completed_view(request):
     return render(request, 'core/payment-completed.html',  {'cart_data':request.session['cart_data_obj'],'totalcartitems':len(request.session['cart_data_obj']),'cart_total_amount':cart_total_amount})
 
 def payment_failed_view(request):
-    return render(request, 'core/payment-failed.html')
+    return render(request, 'core/payment-failed.html')\
+        
+
+@login_required
+def customer_dashboard(request):
+    orders_list =CartOrder.objects.filter(user=request.user).order_by("-id")
+    address = Address.objects.filter(user=request.user)
+    
+    orders = CartOrder.objects.annotate(month=ExtractMonth("order_date")).values("month").annotate(count=Count("id")).values("month","count")
+    month = []
+    total_orders = []
+    
+    for i in orders:
+        month.append(calendar.month_name[i["month"]])
+        total_orders.append(i["count"])
+        
+    if request.method == "POST":
+        address = request.POST.get("address")
+        mobile = request.POST.get("mobile")
+        
+        new_address = Address.objects.create(
+            user=request.user,
+            address=address,
+            mobile=mobile,
+        )
+        messages.success(request, " Your address has been added successfully.")
+        return redirect("prossyApp:dashboard")
+    else:
+        print("Error")
+        
+    # user_profile = Profile.objects.get(user=request.user)
+    # print("user profile is: ########", user_profile)
+
+    context = {
+        "orders_list": orders_list,
+        "address": address,
+        # "user_profile": user_profile,
+        "orders": orders,
+        "month": month,
+        "total_orders": total_orders,
+    }
+    
+    return render(request, 'core/dashboard.html', context)
+
+def order_detail(request, id):
+    order = CartOrder.objects.get(user=request.user, id=id)
+    order_items = CartOrderItems.objects.filter(order=order)
+
+    
+    context = {
+        "order_items": order_items,
+    }
+    return render(request, 'core/order-detail.html', context)
+
+def make_address_default(request):
+    id = request.GET['id']
+    Address.objects.update(status=False)
+    Address.objects.filter(id=id).update(status=True)
+    return JsonResponse({"boolean": True})
+
+@login_required
+def wishlist_view(request):
+    wishlist = Wishlist.objects.all()
+    
+    context = {
+        "w":wishlist
+    }
+    
+    return render(request, "core/wishlist.html", context)
+
+def add_to_wishlist(request):
+    product_id = request.GET['id']
+    product = Product.objects.get(id=product_id)
+    print("product id isssssssssssss:" + product_id)
+
+    context = {}
+
+    wishlist_count = Wishlist.objects.filter(product=product, user=request.user).count()
+    print(wishlist_count)
+
+    if wishlist_count > 0:
+        context = {
+            "bool": True
+        }
+    else:
+        new_wishlist = Wishlist.objects.create(
+            user=request.user,
+            product=product,
+        )
+        context = {
+            "bool": True
+        }
+
+    return JsonResponse(context)
+
+def remove_wishlist(request):
+    pid = request.GET['id']
+    wishlist = Wishlist.objects.filter(user=request.user)
+    wishlist_d = Wishlist.objects.get(id=pid)
+    delete_product = wishlist_d.delete()
+    
+    context = {
+        "bool":True,
+        "w":wishlist
+    }
+    wishlist_json = serializers.serialize('json', wishlist)
+    t = render_to_string('core/async/wishlist-list.html', context)
+    return JsonResponse({'data':t,'w':wishlist_json})

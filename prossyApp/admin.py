@@ -30,6 +30,7 @@ class WishlistAdmin(admin.ModelAdmin):
     list_display = ['user', 'product', 'date']
     
 class AddressAdmin(admin.ModelAdmin):
+    list_editable = ['address', 'status']
     list_display = ['user', 'address', 'status']
     
 
