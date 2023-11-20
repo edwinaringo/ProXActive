@@ -148,7 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 JAZZMIN_SETTINGS = {
     'site_header': "Prossy Bottles",
     'site_brand': "Prossy Bottles",
-    'site_logo': "assets/imgs/theme/loading.gif",
+    'site_logo': "assets/imgs/theme/prox3.png",
     'copyright': "prossy bottles.com",
 
 }
@@ -176,3 +176,11 @@ CKEDITOR_CONFIGS = {
 
 PAYPAL_RECEIVER_EMAIL = 'sb-pvosy28100602@business.example.com'
 PAYPAL_TEST = True
+
+
+# portfolio/settings.py
+
+# ...
+
+import django_heroku
+django_heroku.settings(locals())

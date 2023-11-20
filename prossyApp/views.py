@@ -12,6 +12,7 @@ from django.urls import reverse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from paypal.standard.forms import PayPalPaymentsForm
+from userauths.models import User
 from django.contrib.auth.decorators import login_required
 
 import calendar
@@ -377,14 +378,14 @@ def customer_dashboard(request):
     else:
         print("Error")
         
-    # user_profile = Profile.objects.get(user=request.user)
-    # print("user profile is: ########", user_profile)
+    user_profile = Profile.objects.get(user=request.user)
+    print("user profile is: ########", user_profile)
 
     context = {
+        "user_profile": user_profile,
+        "orders": orders,
         "orders_list": orders_list,
         "address": address,
-        # "user_profile": user_profile,
-        "orders": orders,
         "month": month,
         "total_orders": total_orders,
     }
@@ -455,3 +456,41 @@ def remove_wishlist(request):
     wishlist_json = serializers.serialize('json', wishlist)
     t = render_to_string('core/async/wishlist-list.html', context)
     return JsonResponse({'data':t,'w':wishlist_json})
+
+
+#other pages
+def contact(request):
+    return render(request, "core/contact.html")
+
+
+def ajax_contact_form(request):
+    full_name = request.GET['full_name']
+    email = request.GET['email']
+    phone = request.GET['phone']
+    subject = request.GET['subject']
+    message = request.GET['message']
+
+    contact = ContactUs.objects.create(
+        full_name=full_name,
+        email=email,
+        phone=phone,
+        subject=subject,
+        message=message,
+    )
+
+    data = {
+        "bool": True,
+        "message": "Message Sent Successfully"
+    }
+
+    return JsonResponse({"data":data})
+
+def purchase_guide(request):
+    return render(request, "core/purchase_guide.html")
+
+def privacy_policy(request):
+    return render(request, "core/privacy_policy.html")
+
+def terms_of_service(request):
+    return render(request, "core/terms_of_service.html")
+

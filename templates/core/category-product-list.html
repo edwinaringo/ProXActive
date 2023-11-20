@@ -84,13 +84,13 @@
                                         <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                         <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                     </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                    {% comment %} <div class="product-badges product-badges-position product-badges-mrg">
                                         <span class="hot">-{{p.get_percentage|floatformat:0}}%</span>
-                                    </div>
+                                    </div> {% endcomment %}
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop-grid-right.html">{{p.category}}</a>
+                                        <a href="{% url 'prossyApp:product-detail' p.id %}">{{p.category}}</a>
                                     </div>
                                     <h2><a href="shop-product-right.html">{{p.title}}</a></h2>
                                     <div class="product-rate-cover">
