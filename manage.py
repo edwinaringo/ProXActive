@@ -2,6 +2,8 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from django.core.management.utils import get_random_secret_key
+
 
 
 def main():
@@ -20,3 +22,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
+print(get_random_secret_key())
+
