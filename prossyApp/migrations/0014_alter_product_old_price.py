@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='product',
             name='old_price',
-            field=models.DecimalField(blank=True, decimal_places=2, max_digits=999999999, null=True),
+            field=models.DecimalField(blank=True, decimal_places=2, max_digits=10, null=True),
         ),
     ]
