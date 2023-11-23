@@ -694,7 +694,6 @@ h4 {
     display: inline-block;
     -webkit-animation: spinner 1.2s infinite ease-in-out;
     animation: spinner 1.2s infinite ease-in-out;
-    background: url(../imgs/theme/favicon.svg);
     -webkit-box-shadow: 0 0 10px #fff;
     box-shadow: 0 0 10px #fff;
 }
@@ -984,7 +983,6 @@ h5.widget-title {
 }
 
 .title.style-3 {
-    background-image: url(../imgs/theme/wave.png);
     background-position: center bottom;
     background-repeat: no-repeat;
     padding-bottom: 25px;
@@ -2022,7 +2020,6 @@ input.qty-val {
     border: 0;
     border-radius: 50px 0 0 50px;
     padding-left: 58px;
-    background: url(../imgs/theme/icons/icon-plane.png) no-repeat 25px center;
 }
 
 .hero-slider-1 .slider-content form button {
